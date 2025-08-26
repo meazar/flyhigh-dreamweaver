@@ -13,6 +13,7 @@ import {
   CheckCircle,
   ArrowRight
 } from "lucide-react";
+import bannerBg from "@/assets/banner-bg.jpg";
 
 const Services = () => {
   const mainServices = [
@@ -110,19 +111,19 @@ const Services = () => {
 
   return (
     <div className="min-h-screen">
-      {/* Hero Section */}
-      <section className="bg-hero-gradient text-primary-foreground py-20 relative overflow-hidden">
-        <div className="absolute inset-0 bg-black/20"></div>
+      {/* Banner Section */}
+      <section 
+        className="relative py-20 bg-cover bg-center"
+        style={{ backgroundImage: `url(${bannerBg})` }}
+      >
+        <div className="absolute inset-0 bg-primary/80"></div>
         <div className="container mx-auto px-4 relative z-10">
-          <div className="max-w-4xl mx-auto text-center space-y-6">
-            <Badge className="bg-accent text-accent-foreground mb-4">
-              Our Services
-            </Badge>
-            <h1 className="text-4xl md:text-5xl font-bold">
-              Comprehensive <span className="text-accent">Education Solutions</span>
+          <div className="text-center text-primary-foreground">
+            <h1 className="text-4xl md:text-5xl font-bold mb-4">
+              Our Premium Services
             </h1>
-            <p className="text-xl text-primary-foreground/90 leading-relaxed">
-              From university selection to post-arrival support, we provide end-to-end services to ensure your study abroad journey is smooth and successful.
+            <p className="text-xl text-primary-foreground/90 max-w-2xl mx-auto">
+              Comprehensive education solutions from university selection to post-arrival support
             </p>
           </div>
         </div>

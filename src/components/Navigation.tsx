@@ -13,10 +13,11 @@ const Navigation = () => {
     { href: "/about", label: "About Us" },
     { href: "/services", label: "Services" },
     { href: "/destinations", label: "Study Destinations" },
+    { href: "/blog", label: "Blog" },
     { href: "/contact", label: "Contact" },
   ];
 
-  const isActive = (path: string) => location.pathname === path;
+  const isActive = (path: string) => location.pathname === path || (path === "/blog" && location.pathname.startsWith("/blog"));
 
   return (
     <nav className="bg-background/95 backdrop-blur-md border-b border-border sticky top-0 z-50 shadow-card">

@@ -13,6 +13,10 @@ import {
   Plane,
   Star
 } from "lucide-react";
+import TestimonialSlider from "@/components/TestimonialSlider";
+import BlogSection from "@/components/BlogSection";
+import UniversitySection from "@/components/UniversitySection";
+import heroBg from "@/assets/hero-bg.jpg";
 
 const Home = () => {
   const stats = [
@@ -52,8 +56,11 @@ const Home = () => {
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="relative bg-hero-gradient text-primary-foreground py-20 lg:py-32 overflow-hidden">
-        <div className="absolute inset-0 bg-black/20"></div>
+      <section 
+        className="relative text-primary-foreground py-20 lg:py-32 overflow-hidden bg-cover bg-center"
+        style={{ backgroundImage: `url(${heroBg})` }}
+      >
+        <div className="absolute inset-0 bg-primary/80"></div>
         <div className="container mx-auto px-4 relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div className="space-y-8">
@@ -158,70 +165,13 @@ const Home = () => {
       </section>
 
       {/* Testimonials Section */}
-      <section className="py-20 bg-gradient-to-br from-primary/5 to-accent/5">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-foreground mb-4">What Our Students Say</h2>
-            <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
-              Success stories from students who achieved their dreams with Fly High
-            </p>
-          </div>
+      <TestimonialSlider />
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {[
-              {
-                name: "Priya Sharma",
-                destination: "University of Melbourne, Australia",
-                image: "👩‍🎓",
-                testimonial: "Fly High made my dream of studying in Australia a reality. Their expert guidance through the visa process was exceptional, and I got accepted to my dream university!",
-                course: "Master's in Computer Science"
-              },
-              {
-                name: "Ramesh Thapa",
-                destination: "University of Toronto, Canada", 
-                image: "👨‍🎓",
-                testimonial: "The team at Fly High provided incredible support throughout my journey. From university selection to visa approval, everything was handled professionally.",
-                course: "MBA"
-              },
-              {
-                name: "Sita Gurung",
-                destination: "University of Manchester, UK",
-                image: "👩‍🎓",
-                testimonial: "I was confused about which country to choose, but Fly High's counselors helped me make the right decision. Now I'm successfully pursuing my Master's in the UK!",
-                course: "Master's in Data Science"
-              }
-            ].map((testimonial, index) => (
-              <Card key={index} className="group hover:shadow-elegant transition-all duration-300 hover:-translate-y-1 bg-background/80 backdrop-blur-sm border-l-4 border-l-accent">
-                <CardContent className="p-6">
-                  <div className="flex items-center gap-4 mb-4">
-                    <div className="text-4xl">{testimonial.image}</div>
-                    <div>
-                      <h4 className="font-semibold text-foreground">{testimonial.name}</h4>
-                      <p className="text-sm text-muted-foreground">{testimonial.course}</p>
-                      <p className="text-sm text-accent font-medium">{testimonial.destination}</p>
-                    </div>
-                  </div>
-                  <blockquote className="text-muted-foreground italic leading-relaxed mb-4">
-                    "{testimonial.testimonial}"
-                  </blockquote>
-                  <div className="flex text-accent">
-                    {[...Array(5)].map((_, i) => (
-                      <Star key={i} className="w-4 h-4 fill-current" />
-                    ))}
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
+      {/* Blog Section */}
+      <BlogSection />
 
-          <div className="text-center mt-12">
-            <Button variant="outline" size="lg" className="px-8">
-              <Users className="w-5 h-5 mr-2" />
-              View More Success Stories
-            </Button>
-          </div>
-        </div>
-      </section>
+      {/* Universities Section */}
+      <UniversitySection />
 
       {/* Destinations Section */}
       <section className="py-20 bg-muted/30">
