@@ -16,6 +16,9 @@ import {
 import TestimonialSlider from "@/components/TestimonialSlider";
 import BlogSection from "@/components/BlogSection";
 import UniversitySection from "@/components/UniversitySection";
+import EventsSection from "@/components/EventsSection";
+import NewsletterSection from "@/components/NewsletterSection";
+import ConsultationModal from "@/components/ConsultationModal";
 import heroBg from "@/assets/hero-bg.jpg";
 
 const Home = () => {
@@ -79,10 +82,12 @@ const Home = () => {
               </div>
               
               <div className="flex flex-col sm:flex-row gap-4">
-                <Button size="lg" variant="accent" className="text-lg px-8">
-                  <GraduationCap className="w-5 h-5 mr-2" />
-                  Book Free Consultation
-                </Button>
+                <ConsultationModal>
+                  <Button size="lg" variant="accent" className="text-lg px-8">
+                    <GraduationCap className="w-5 h-5 mr-2" />
+                    Book Free Consultation
+                  </Button>
+                </ConsultationModal>
                 <Button size="lg" variant="outline" className="text-lg px-8 bg-white/10 border-white/30 text-white hover:bg-white hover:text-primary">
                   Explore Destinations
                   <ArrowRight className="w-5 h-5 ml-2" />
@@ -173,6 +178,9 @@ const Home = () => {
       {/* Universities Section */}
       <UniversitySection />
 
+      {/* Events Section */}
+      <EventsSection />
+
       {/* Destinations Section */}
       <section className="py-20 bg-muted/30">
         <div className="container mx-auto px-4">
@@ -212,6 +220,9 @@ const Home = () => {
         </div>
       </section>
 
+      {/* Newsletter Section */}
+      <NewsletterSection />
+
       {/* CTA Section */}
       <section className="py-20 bg-primary text-primary-foreground relative overflow-hidden">
         <div className="absolute inset-0 bg-primary/90"></div>
@@ -222,9 +233,11 @@ const Home = () => {
               Book a free consultation with our expert counselors and take the first step towards your dream education abroad.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg" variant="accent" className="text-lg px-8">
-                Book Free Consultation
-              </Button>
+              <ConsultationModal>
+                <Button size="lg" variant="accent" className="text-lg px-8">
+                  Book Free Consultation
+                </Button>
+              </ConsultationModal>
               <Button asChild size="lg" variant="outline" className="text-lg px-8 bg-white/10 border-white/30 text-white hover:bg-white hover:text-primary">
                 <Link to="/contact">Contact Us</Link>
               </Button>

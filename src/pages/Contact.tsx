@@ -18,6 +18,7 @@ import {
   Globe
 } from "lucide-react";
 import bannerBg from "@/assets/banner-bg.jpg";
+import GoogleMap from "@/components/GoogleMap";
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -325,6 +326,22 @@ const Contact = () => {
                 </CardContent>
               </Card>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Google Map Section */}
+      <section className="py-20 bg-muted/30">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold text-foreground mb-4">Find Us</h2>
+            <p className="text-xl text-muted-foreground">
+              Visit our head office in the heart of Kathmandu
+            </p>
+          </div>
+          
+          <div className="max-w-4xl mx-auto">
+            <GoogleMap />
           </div>
         </div>
       </section>

@@ -11,6 +11,7 @@ import {
   MapPin,
   Calendar
 } from "lucide-react";
+import bannerBg from "@/assets/banner-bg.jpg";
 
 const Destinations = () => {
   const destinations = [
@@ -126,9 +127,12 @@ const Destinations = () => {
 
   return (
     <div className="min-h-screen">
-      {/* Hero Section */}
-      <section className="bg-hero-gradient text-primary-foreground py-20 relative overflow-hidden">
-        <div className="absolute inset-0 bg-black/20"></div>
+      {/* Banner Section */}
+      <section 
+        className="relative py-20 bg-cover bg-center"
+        style={{ backgroundImage: `url(${bannerBg})` }}
+      >
+        <div className="absolute inset-0 bg-primary/80"></div>
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-4xl mx-auto text-center space-y-6">
             <Badge className="bg-accent text-accent-foreground mb-4">

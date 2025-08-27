@@ -1,8 +1,10 @@
 import { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Menu, X, Phone, Mail } from "lucide-react";
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
+import { Menu, X, Phone, Mail, ChevronDown } from "lucide-react";
 import flyhighLogo from "@/assets/flyhigh-logo.png";
+import ConsultationModal from "./ConsultationModal";
 
 const Navigation = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -10,10 +12,21 @@ const Navigation = () => {
 
   const navLinks = [
     { href: "/", label: "Home" },
-    { href: "/about", label: "About Us" },
+    { 
+      href: "/about", 
+      label: "About Us",
+      dropdown: [
+        { href: "/about", label: "Message From Director" },
+        { href: "/about#why-choose", label: "Why Choose us?" },
+        { href: "/about#association", label: "Association Partner" },
+        { href: "/about#team", label: "KIEC Team" },
+        { href: "/about#certified", label: "Certified Agent for Australia" }
+      ]
+    },
     { href: "/services", label: "Services" },
     { href: "/destinations", label: "Study Destinations" },
     { href: "/blog", label: "Blog" },
+    { href: "/events", label: "Events" },
     { href: "/contact", label: "Contact" },
   ];
 
@@ -55,25 +68,52 @@ const Navigation = () => {
           {/* Desktop Navigation */}
           <div className="hidden lg:flex items-center space-x-8">
             {navLinks.map((link) => (
-              <Link
-                key={link.href}
-                to={link.href}
-                className={`font-medium transition-smooth ${
-                  isActive(link.href)
-                    ? "text-primary border-b-2 border-primary"
-                    : "text-muted-foreground hover:text-primary"
-                }`}
-              >
-                {link.label}
-              </Link>
+              link.dropdown ? (
+                <DropdownMenu key={link.href}>
+                  <DropdownMenuTrigger className={`font-medium transition-smooth flex items-center ${
+                    isActive(link.href)
+                      ? "text-primary border-b-2 border-primary"
+                      : "text-muted-foreground hover:text-primary"
+                  }`}>
+                    {link.label}
+                    <ChevronDown className="w-4 h-4 ml-1" />
+                  </DropdownMenuTrigger>
+                  <DropdownMenuContent className="bg-background border border-border shadow-elegant">
+                    {link.dropdown.map((dropdownItem) => (
+                      <DropdownMenuItem key={dropdownItem.href} asChild>
+                        <Link
+                          to={dropdownItem.href}
+                          className="font-medium text-muted-foreground hover:text-primary cursor-pointer w-full"
+                        >
+                          {dropdownItem.label}
+                        </Link>
+                      </DropdownMenuItem>
+                    ))}
+                  </DropdownMenuContent>
+                </DropdownMenu>
+              ) : (
+                <Link
+                  key={link.href}
+                  to={link.href}
+                  className={`font-medium transition-smooth ${
+                    isActive(link.href)
+                      ? "text-primary border-b-2 border-primary"
+                      : "text-muted-foreground hover:text-primary"
+                  }`}
+                >
+                  {link.label}
+                </Link>
+              )
             ))}
           </div>
 
           {/* CTA Button */}
           <div className="hidden lg:block">
-            <Button className="bg-hero-gradient hover:shadow-glow transition-all duration-300">
-              Free Consultation
-            </Button>
+            <ConsultationModal>
+              <Button className="bg-hero-gradient hover:shadow-glow transition-all duration-300">
+                Free Consultation
+              </Button>
+            </ConsultationModal>
           </div>
 
           {/* Mobile Menu Button */}
@@ -95,22 +135,52 @@ const Navigation = () => {
           <div className="lg:hidden mt-4 pb-4 border-t border-border pt-4">
             <div className="flex flex-col space-y-4">
               {navLinks.map((link) => (
-                <Link
-                  key={link.href}
-                  to={link.href}
-                  className={`font-medium transition-smooth ${
-                    isActive(link.href)
-                      ? "text-primary"
-                      : "text-muted-foreground hover:text-primary"
-                  }`}
-                  onClick={() => setIsMenuOpen(false)}
-                >
-                  {link.label}
-                </Link>
+                link.dropdown ? (
+                  <div key={link.href} className="space-y-2">
+                    <Link
+                      to={link.href}
+                      className={`font-medium transition-smooth ${
+                        isActive(link.href)
+                          ? "text-primary"
+                          : "text-muted-foreground hover:text-primary"
+                      }`}
+                      onClick={() => setIsMenuOpen(false)}
+                    >
+                      {link.label}
+                    </Link>
+                    <div className="pl-4 space-y-2">
+                      {link.dropdown.map((dropdownItem) => (
+                        <Link
+                          key={dropdownItem.href}
+                          to={dropdownItem.href}
+                          className="block text-sm text-muted-foreground hover:text-primary transition-smooth"
+                          onClick={() => setIsMenuOpen(false)}
+                        >
+                          {dropdownItem.label}
+                        </Link>
+                      ))}
+                    </div>
+                  </div>
+                ) : (
+                  <Link
+                    key={link.href}
+                    to={link.href}
+                    className={`font-medium transition-smooth ${
+                      isActive(link.href)
+                        ? "text-primary"
+                        : "text-muted-foreground hover:text-primary"
+                    }`}
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    {link.label}
+                  </Link>
+                )
               ))}
-              <Button className="bg-hero-gradient hover:shadow-glow transition-all duration-300 w-full">
-                Free Consultation
-              </Button>
+              <ConsultationModal>
+                <Button className="bg-hero-gradient hover:shadow-glow transition-all duration-300 w-full">
+                  Free Consultation
+                </Button>
+              </ConsultationModal>
             </div>
           </div>
         )}
