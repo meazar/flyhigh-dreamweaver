@@ -3,8 +3,20 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Calendar, Clock, MapPin, Users, ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
+import usaBg from "@/assets/events/usa-bg.jpg";
+import ukBg from "@/assets/events/uk-bg.jpg";
+import australiaBg from "@/assets/events/australia-bg.jpg";
 
 const EventsSection = () => {
+  const getCountryBackground = (country: string) => {
+    switch(country) {
+      case "USA": return usaBg;
+      case "UK": return ukBg;
+      case "Australia": return australiaBg;
+      default: return usaBg;
+    }
+  };
+
   const events = [
     {
       id: 1,
@@ -73,11 +85,17 @@ const EventsSection = () => {
           {events.map((event) => (
             <Card key={event.id} className="group overflow-hidden hover:shadow-elegant transition-all duration-300 hover:-translate-y-1">
               <div className="relative">
-                <div className="aspect-video bg-gradient-to-br from-primary/20 to-accent/20 flex items-center justify-center">
-                  <div className="text-6xl">{event.country === "USA" ? "🇺🇸" : event.country === "UK" ? "🇬🇧" : "🇦🇺"}</div>
+                <div 
+                  className="aspect-video bg-cover bg-center bg-no-repeat relative flex items-center justify-center"
+                  style={{ backgroundImage: `url(${getCountryBackground(event.country)})` }}
+                >
+                  <div className="absolute inset-0 bg-gradient-to-br from-black/40 via-transparent to-black/20"></div>
+                  <div className="relative z-10 text-6xl drop-shadow-lg">
+                    {event.country === "USA" ? "🇺🇸" : event.country === "UK" ? "🇬🇧" : "🇦🇺"}
+                  </div>
                 </div>
-                <div className="absolute top-4 left-4">
-                  <Badge className="bg-primary text-primary-foreground">
+                <div className="absolute top-4 left-4 z-20">
+                  <Badge className="bg-primary text-primary-foreground shadow-lg">
                     {event.country}
                   </Badge>
                 </div>
