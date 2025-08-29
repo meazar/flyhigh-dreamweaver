@@ -20,6 +20,12 @@ import EventsSection from "@/components/EventsSection";
 import NewsletterSection from "@/components/NewsletterSection";
 import ConsultationModal from "@/components/ConsultationModal";
 import heroBg from "@/assets/hero-bg.jpg";
+import australiaFlagBg from "@/assets/flags/australia-flag-bg.jpg";
+import canadaFlagBg from "@/assets/flags/canada-flag-bg.jpg";
+import ukFlagBg from "@/assets/flags/uk-flag-bg.jpg";
+import usaFlagBg from "@/assets/flags/usa-flag-bg.jpg";
+import newzealandFlagBg from "@/assets/flags/newzealand-flag-bg.jpg";
+import germanyFlagBg from "@/assets/flags/germany-flag-bg.jpg";
 
 const Home = () => {
   const stats = [
@@ -55,6 +61,18 @@ const Home = () => {
     { country: "New Zealand", universities: "25+ Universities", flag: "🇳🇿" },
     { country: "Germany", universities: "35+ Universities", flag: "🇩🇪" },
   ];
+
+  const getCountryFlagBackground = (country: string) => {
+    switch(country) {
+      case "Australia": return australiaFlagBg;
+      case "Canada": return canadaFlagBg;
+      case "United Kingdom": return ukFlagBg;
+      case "United States": return usaFlagBg;
+      case "New Zealand": return newzealandFlagBg;
+      case "Germany": return germanyFlagBg;
+      default: return australiaFlagBg;
+    }
+  };
 
   return (
     <div className="min-h-screen">
@@ -193,18 +211,24 @@ const Home = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {destinations.map((destination, index) => (
-              <Card key={index} className="group hover:shadow-elegant transition-all duration-300 hover:-translate-y-1 cursor-pointer">
-                <CardContent className="p-6">
-                  <div className="flex items-center justify-between mb-4">
-                    <div className="text-4xl">{destination.flag}</div>
-                    <Star className="w-5 h-5 text-accent fill-current" />
-                  </div>
-                  <h3 className="text-xl font-semibold text-foreground mb-2">{destination.country}</h3>
-                  <p className="text-muted-foreground">{destination.universities}</p>
-                  <Button variant="outline" className="w-full mt-4 group-hover:bg-primary group-hover:text-primary-foreground">
-                    Explore Programs
-                  </Button>
-                </CardContent>
+              <Card key={index} className="group hover:shadow-elegant transition-all duration-300 hover:-translate-y-1 cursor-pointer overflow-hidden">
+                <div 
+                  className="relative bg-cover bg-center"
+                  style={{ backgroundImage: `url(${getCountryFlagBackground(destination.country)})` }}
+                >
+                  <div className="absolute inset-0 bg-gradient-to-br from-black/60 via-black/40 to-black/20"></div>
+                  <CardContent className="relative z-10 p-6">
+                    <div className="flex items-center justify-between mb-4">
+                      <div className="text-4xl drop-shadow-lg">{destination.flag}</div>
+                      <Star className="w-5 h-5 text-accent fill-current drop-shadow-md" />
+                    </div>
+                    <h3 className="text-xl font-semibold text-white mb-2 drop-shadow-md">{destination.country}</h3>
+                    <p className="text-white/90 mb-4 drop-shadow-sm">{destination.universities}</p>
+                    <Button variant="outline" className="w-full bg-white/20 border-white/40 text-white hover:bg-white hover:text-primary backdrop-blur-sm">
+                      Explore Programs
+                    </Button>
+                  </CardContent>
+                </div>
               </Card>
             ))}
           </div>
