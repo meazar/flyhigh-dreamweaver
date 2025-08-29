@@ -16,11 +16,11 @@ const Navigation = () => {
       href: "/about", 
       label: "About Us",
       dropdown: [
-        { href: "/about", label: "Message From Director" },
-        { href: "/about#why-choose", label: "Why Choose us?" },
-        { href: "/about#association", label: "Association Partner" },
-        { href: "/about#team", label: "KIEC Team" },
-        { href: "/about#certified", label: "Certified Agent for Australia" }
+        { href: "/message-from-director", label: "Message From Director" },
+        { href: "/why-choose-us", label: "Why Choose us?" },
+        { href: "/association-partner", label: "Association Partner" },
+        { href: "/our-team", label: "Our Team" },
+        { href: "/official-certification", label: "Official Certification" }
       ]
     },
     { href: "/services", label: "Services" },
