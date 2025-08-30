@@ -11,9 +11,12 @@ import {
   MapPin,
   Calendar
 } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 import bannerBg from "@/assets/banner-bg.jpg";
 
 const Destinations = () => {
+  const navigate = useNavigate();
+  
   const destinations = [
     {
       country: "Australia",
@@ -284,7 +287,11 @@ const Destinations = () => {
                     </ul>
                   </div>
 
-                  <Button variant="hero" className="w-full">
+                  <Button 
+                    variant="hero" 
+                    className="w-full"
+                    onClick={() => navigate(`/universities/${destination.country.toLowerCase().replace(' ', '-')}`)}
+                  >
                     Explore {destination.country} Universities
                   </Button>
                 </CardContent>
