@@ -17,6 +17,7 @@ import {
 import { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import bannerBg from "@/assets/banner-bg.jpg";
+import { universities, getUniversitiesByCountry } from "@/data/universities";
 
 const UniversityList = () => {
   const navigate = useNavigate();
@@ -24,69 +25,6 @@ const UniversityList = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [selectedLevel, setSelectedLevel] = useState("all");
   const [selectedRanking, setSelectedRanking] = useState("all");
-
-  const universities = [
-    {
-      id: 1,
-      name: "University of Melbourne",
-      country: "Australia",
-      city: "Melbourne",
-      ranking: "#33 Global",
-      image: "/src/assets/universities/melbourne.jpg",
-      description: "Leading research university with excellence in teaching and world-class facilities.",
-      programs: ["Engineering", "Business", "Medicine", "Computer Science"],
-      tuitionRange: "$35,000 - $45,000 AUD",
-      acceptanceRate: "70%",
-      studentRatio: "1:18",
-      level: ["Bachelor", "Master", "PhD"],
-      highlights: ["Top research university", "Industry partnerships", "Graduate employability"]
-    },
-    {
-      id: 2,
-      name: "University of Toronto",
-      country: "Canada",
-      city: "Toronto", 
-      ranking: "#21 Global",
-      image: "/src/assets/universities/toronto.jpg",
-      description: "Canada's top university with strong research programs and diverse student body.",
-      programs: ["Computer Science", "Engineering", "Business", "Medicine"],
-      tuitionRange: "$25,000 - $35,000 CAD",
-      acceptanceRate: "43%",
-      studentRatio: "1:15",
-      level: ["Bachelor", "Master", "PhD"],
-      highlights: ["Top research output", "Industry connections", "Vibrant campus life"]
-    },
-    {
-      id: 3,
-      name: "University of Oxford",
-      country: "United Kingdom",
-      city: "Oxford",
-      ranking: "#4 Global",
-      image: "/src/assets/universities/oxford.jpg",
-      description: "World's oldest English-speaking university with academic excellence and tradition.",
-      programs: ["Law", "Business", "Medicine", "Liberal Arts"],
-      tuitionRange: "$30,000 - $50,000 GBP",
-      acceptanceRate: "17%",
-      studentRatio: "1:11",
-      level: ["Bachelor", "Master", "PhD"],
-      highlights: ["Historic prestige", "Tutorial system", "Global alumni network"]
-    },
-    {
-      id: 4,
-      name: "Harvard University",
-      country: "United States",
-      city: "Cambridge",
-      ranking: "#3 Global",
-      image: "/src/assets/universities/harvard.jpg",
-      description: "Ivy League institution known for academic excellence and influential alumni.",
-      programs: ["Business", "Law", "Medicine", "Computer Science"],
-      tuitionRange: "$50,000 - $60,000 USD",
-      acceptanceRate: "5%",
-      studentRatio: "1:7",
-      level: ["Bachelor", "Master", "PhD"],
-      highlights: ["World-renowned faculty", "Extensive resources", "Global influence"]
-    }
-  ];
 
   const filteredUniversities = universities.filter(uni => {
     const matchesSearch = uni.name.toLowerCase().includes(searchTerm.toLowerCase()) ||

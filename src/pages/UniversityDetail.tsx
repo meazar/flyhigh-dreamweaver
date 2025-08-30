@@ -19,78 +19,27 @@ import {
   Mail
 } from "lucide-react";
 import { useParams, useNavigate } from "react-router-dom";
+import { getUniversityById } from "@/data/universities";
 
 const UniversityDetail = () => {
   const { id } = useParams();
   const navigate = useNavigate();
-
-  // Mock data - in real app, this would come from API
-  const university = {
-    id: 1,
-    name: "University of Melbourne",
-    country: "Australia",
-    city: "Melbourne",
-    ranking: "#33 Global",
-    qsRanking: "#14 QS World",
-    image: "/src/assets/universities/melbourne.jpg",
-    website: "https://www.unimelb.edu.au",
-    description: "The University of Melbourne is a public research university located in Melbourne, Australia. Founded in 1853, it is Australia's second oldest university and the oldest in Victoria. The university is consistently ranked among the leading universities in the world.",
-    established: "1853",
-    studentPopulation: "47,000+",
-    internationalStudents: "18,000+",
-    campuses: "7 campuses",
-    tuitionRange: "$35,000 - $45,000 AUD",
-    acceptanceRate: "70%",
-    studentRatio: "1:18",
-    highlights: [
-      "Top research university in Australia",
-      "Strong industry partnerships",
-      "Excellent graduate employability",
-      "Beautiful campus in Melbourne",
-      "Diverse international community"
-    ],
-    faculties: [
-      {
-        name: "Faculty of Engineering and Information Technology",
-        programs: ["Computer Science", "Software Engineering", "Electrical Engineering", "Civil Engineering"],
-        description: "Leading engineering education with state-of-the-art facilities"
-      },
-      {
-        name: "Melbourne Business School",
-        programs: ["MBA", "Master of Management", "Master of Finance", "Bachelor of Commerce"],
-        description: "Consistently ranked among the world's top business schools"
-      },
-      {
-        name: "Faculty of Medicine, Dentistry and Health Sciences",
-        programs: ["Medicine", "Dentistry", "Nursing", "Public Health"],
-        description: "Excellence in medical education and research"
-      }
-    ],
-    admissionRequirements: {
-      undergraduate: [
-        "High school completion with strong grades",
-        "IELTS 6.5 (no band less than 6.0) or equivalent",
-        "ATAR score of 80+ (for Australian students)",
-        "Subject prerequisites vary by program"
-      ],
-      postgraduate: [
-        "Bachelor's degree with good grades",
-        "IELTS 6.5 (no band less than 6.0) or equivalent",
-        "Relevant work experience (for some programs)",
-        "GMAT/GRE scores (for some business programs)"
-      ]
-    },
-    costs: {
-      tuition: "$35,000 - $45,000 AUD per year",
-      living: "$20,000 - $25,000 AUD per year",
-      books: "$1,500 - $2,500 AUD per year",
-      health: "$460 AUD per year"
-    },
-    intakes: [
-      { semester: "Semester 1", period: "February - June", deadline: "December 31" },
-      { semester: "Semester 2", period: "July - November", deadline: "May 31" }
-    ]
-  };
+  
+  const university = getUniversityById(Number(id));
+  
+  if (!university) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <div className="text-center">
+          <h1 className="text-4xl font-bold mb-4">University Not Found</h1>
+          <p className="text-muted-foreground mb-8">The university you're looking for doesn't exist.</p>
+          <Button onClick={() => navigate('/universities')}>
+            Back to Universities
+          </Button>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen">
