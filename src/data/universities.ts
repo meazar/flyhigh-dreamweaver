@@ -1,3 +1,8 @@
+import melbourneImg from "@/assets/universities/melbourne.jpg";
+import torontoImg from "@/assets/universities/toronto.jpg";
+import oxfordImg from "@/assets/universities/oxford.jpg";
+import harvardImg from "@/assets/universities/harvard.jpg";
+
 export interface University {
   id: number;
   name: string;
@@ -48,7 +53,7 @@ export const universities: University[] = [
     city: "Melbourne",
     ranking: "#33 Global",
     qsRanking: "#14 QS World",
-    image: "/src/assets/universities/melbourne.jpg",
+    image: melbourneImg,
     website: "https://www.unimelb.edu.au",
     description: "The University of Melbourne is a public research university located in Melbourne, Australia. Founded in 1853, it is Australia's second oldest university and the oldest in Victoria. The university is consistently ranked among the leading universities in the world.",
     established: "1853",
@@ -116,7 +121,7 @@ export const universities: University[] = [
     city: "Toronto",
     ranking: "#21 Global",
     qsRanking: "#25 QS World",
-    image: "/src/assets/universities/toronto.jpg",
+    image: torontoImg,
     website: "https://www.utoronto.ca",
     description: "The University of Toronto is a public research university in Toronto, Ontario, Canada, located on the grounds that surround Queen's Park. It was founded by royal charter in 1827 as King's College, the first institution of higher learning in Upper Canada.",
     established: "1827",
@@ -184,7 +189,7 @@ export const universities: University[] = [
     city: "Oxford",
     ranking: "#4 Global",
     qsRanking: "#4 QS World",
-    image: "/src/assets/universities/oxford.jpg",
+    image: oxfordImg,
     website: "https://www.ox.ac.uk",
     description: "The University of Oxford is a collegiate research university in Oxford, England. There is evidence of teaching as early as 1096, making it the oldest university in the English-speaking world and the world's second-oldest university in continuous operation.",
     established: "1096",
@@ -252,7 +257,7 @@ export const universities: University[] = [
     city: "Cambridge",
     ranking: "#3 Global",
     qsRanking: "#5 QS World",
-    image: "/src/assets/universities/harvard.jpg",
+    image: harvardImg,
     website: "https://www.harvard.edu",
     description: "Harvard University is a private Ivy League research university in Cambridge, Massachusetts. Established in 1636 and named for its first benefactor, the Puritan clergyman John Harvard, it is the oldest institution of higher education in the United States.",
     established: "1636",
@@ -320,7 +325,7 @@ export const universities: University[] = [
     city: "Sydney",
     ranking: "#19 Global",
     qsRanking: "#41 QS World",
-    image: "/src/assets/universities/melbourne.jpg",
+    image: melbourneImg,
     website: "https://www.sydney.edu.au",
     description: "The University of Sydney is a public research university located in Sydney, Australia. Founded in 1850, it is the first university in Australia and is regarded as one of the world's leading universities.",
     established: "1850",
@@ -388,7 +393,7 @@ export const universities: University[] = [
     city: "Vancouver",
     ranking: "#34 Global",
     qsRanking: "#47 QS World",
-    image: "/src/assets/universities/toronto.jpg",
+    image: torontoImg,
     website: "https://www.ubc.ca",
     description: "The University of British Columbia is a public research university with campuses in Vancouver and Kelowna, British Columbia, Canada. Established in 1908, UBC is British Columbia's oldest university.",
     established: "1908",
@@ -456,7 +461,7 @@ export const universities: University[] = [
     city: "Cambridge",
     ranking: "#2 Global",
     qsRanking: "#2 QS World",
-    image: "/src/assets/universities/oxford.jpg",
+    image: oxfordImg,
     website: "https://www.cam.ac.uk",
     description: "The University of Cambridge is a collegiate research university in Cambridge, United Kingdom. Founded in 1209 and granted a royal charter by Henry III in 1231, Cambridge is the second-oldest university in the English-speaking world.",
     established: "1209",
@@ -524,7 +529,7 @@ export const universities: University[] = [
     city: "Stanford",
     ranking: "#5 Global",
     qsRanking: "#6 QS World",
-    image: "/src/assets/universities/harvard.jpg",
+    image: harvardImg,
     website: "https://www.stanford.edu",
     description: "Stanford University is a private research university in Stanford, California. Founded in 1885, it is one of the world's leading universities and is known for its entrepreneurial character and proximity to Silicon Valley.",
     established: "1885",
