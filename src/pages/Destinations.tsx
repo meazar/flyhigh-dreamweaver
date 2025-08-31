@@ -290,7 +290,7 @@ const Destinations = () => {
                   <Button 
                     variant="hero" 
                     className="w-full"
-                    onClick={() => navigate(`/universities/${destination.country.toLowerCase().replace(' ', '-')}`)}
+                    onClick={() => navigate(`/universities/country/${destination.country.toLowerCase().replace(' ', '-')}`)}
                   >
                     Explore {destination.country} Universities
                   </Button>

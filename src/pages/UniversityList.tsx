@@ -179,7 +179,7 @@ const UniversityList = () => {
                   <Button 
                     variant="hero" 
                     className="w-full"
-                    onClick={() => navigate(`/universities/${university.id}`)}
+                    onClick={() => navigate(`/university/${university.id}`)}
                   >
                     View Details
                     <ArrowRight className="w-4 h-4 ml-2" />
